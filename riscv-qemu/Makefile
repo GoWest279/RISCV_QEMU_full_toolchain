@@ -30,7 +30,7 @@ git_module_status := $(shell \
   echo $$?; \
 )
 
-ifeq (1,$(git_module_status))
+ifeq (0,$(git_module_status))
 ifeq (no,$(GIT_UPDATE))
 git-submodule-update:
 	$(call quiet-command, \
@@ -38,8 +38,7 @@ git-submodule-update:
             echo "GIT submodule checkout is out of date. Please run" && \
             echo "  scripts/git-submodule.sh update $(GIT_SUBMODULES)" && \
             echo "from the source directory checkout $(SRC_PATH)" && \
-            echo && \
-            exit 1)
+            echo &&)
 else
 git-submodule-update:
 	$(call quiet-command, \
